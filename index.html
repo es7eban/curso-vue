@@ -10,6 +10,9 @@
                 <!-- <li v-for="nombre in nombres">{{ nombre }}</li> -->
                 <li v-for="nombre in nombres" v-text="nombre"></li>
             </ul>
+
+            <input id="input" type="text" v-model="nuevoNombre">
+            <button v-on:click="agregaNombre">Agregar Nombre</button>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -17,8 +20,18 @@
         <script>
             var app = new Vue ({
                 el: '#root',
+
                 data: {
+                    nuevoNombre: '',
                     nombres: ['Juan', 'Maria', 'Francisca', 'Esteban']
+                },
+                
+                methods: {
+                    agregaNombre() {
+                        this.nombres.push(this.nuevoNombre);
+
+                        this.nuevoNombre = '';
+                    }
                 }
             })
         </script>
