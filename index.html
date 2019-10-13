@@ -2,27 +2,19 @@
 <html>
     <head>
         <title></title>
-
-        <style>
-            .fuente-roja { color: red; }
-            .btn-azul { background: blue; }
-        </style>
     </head>
     <body>
 
         <div id="root">
+            <h1>Todas las tareas</h1>
             <ul>
-                <!-- <li v-for="nombre in nombres">{{ nombre }}</li> -->
-                <li v-for="nombre in nombres" v-text="nombre"></li>
+                <li v-for="tarea in tareas" v-text="tarea.descripcion"></li>
             </ul>
 
-            <input id="input" type="text" v-model="nuevoNombre" :class="fuenteRoja">
-            <button @click="agregaNombre" :title="title" :class="{ 'btn-azul': clickeado }">
-                Agregar Nombre
-            </button>
-            <!-- <button v-on:click="agregaNombre" v-bind:title="title" v-bind:class="fuenteRoja">
-                Agregar Nombre
-            </button> -->
+            <h1>Tareas no completadas</h1>
+            <ul>
+                <li v-for="tarea in tareasNoCompletas" v-text="tarea.descripcion"></li>
+            </ul>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -32,20 +24,26 @@
                 el: '#root',
 
                 data: {
-                    nuevoNombre: '',
-                    nombres: ['Juan', 'Maria', 'Francisca', 'Esteban'],
-                    title: 'Si haces click agregaras un nuevo valor a la lista',
-                    fuenteRoja: 'fuente-roja',
-                    clickeado: false
+                    tareas: [
+                        {descripcion: 'tarea1', completada: true},
+                        {descripcion: 'tarea2', completada: true},
+                        {descripcion: 'tarea3', completada: false},
+                        {descripcion: 'tarea4', completada: true},
+                        {descripcion: 'tarea5', completada: true},
+                        {descripcion: 'tarea6', completada: false},
+                        {descripcion: 'tarea7', completada: true},
+                        {descripcion: 'tarea8', completada: true},
+                        {descripcion: 'tarea9', completada: true},
+                    ]
                 },
                 
-                methods: {
-                    // ES2015 sintaxis para definir metodo
-                    agregaNombre() {
-                        this.nombres.push(this.nuevoNombre);
+                computed: {
+                    tareasNoCompletas() {
+                        return this.tareas.filter(tarea => !tarea.completada);
 
-                        this.nuevoNombre = '';
-                        this.clickeado = true;
+                        // return this.tareas.filter(function (tarea) {
+                        //     !tarea.completada;
+                        // });
                     }
                 }
             })
