@@ -2,6 +2,11 @@
 <html>
     <head>
         <title></title>
+
+        <style>
+            .fuente-roja { color: red; }
+            .btn-azul { background: blue; }
+        </style>
     </head>
     <body>
 
@@ -11,8 +16,13 @@
                 <li v-for="nombre in nombres" v-text="nombre"></li>
             </ul>
 
-            <input id="input" type="text" v-model="nuevoNombre">
-            <button v-on:click="agregaNombre">Agregar Nombre</button>
+            <input id="input" type="text" v-model="nuevoNombre" :class="fuenteRoja">
+            <button @click="agregaNombre" :title="title" :class="{ 'btn-azul': clickeado }">
+                Agregar Nombre
+            </button>
+            <!-- <button v-on:click="agregaNombre" v-bind:title="title" v-bind:class="fuenteRoja">
+                Agregar Nombre
+            </button> -->
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -23,14 +33,19 @@
 
                 data: {
                     nuevoNombre: '',
-                    nombres: ['Juan', 'Maria', 'Francisca', 'Esteban']
+                    nombres: ['Juan', 'Maria', 'Francisca', 'Esteban'],
+                    title: 'Si haces click agregaras un nuevo valor a la lista',
+                    fuenteRoja: 'fuente-roja',
+                    clickeado: false
                 },
                 
                 methods: {
+                    // ES2015 sintaxis para definir metodo
                     agregaNombre() {
                         this.nombres.push(this.nuevoNombre);
 
                         this.nuevoNombre = '';
+                        this.clickeado = true;
                     }
                 }
             })
