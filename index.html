@@ -6,47 +6,11 @@
     <body>
 
         <div id="root">
-            <h1>Todas las tareas</h1>
-            <ul>
-                <li v-for="tarea in tareas" v-text="tarea.descripcion"></li>
-            </ul>
-
-            <h1>Tareas no completadas</h1>
-            <ul>
-                <li v-for="tarea in tareasNoCompletas" v-text="tarea.descripcion"></li>
-            </ul>
+            <task-list></task-list>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-        <script>
-            var app = new Vue ({
-                el: '#root',
-
-                data: {
-                    tareas: [
-                        {descripcion: 'tarea1', completada: true},
-                        {descripcion: 'tarea2', completada: true},
-                        {descripcion: 'tarea3', completada: false},
-                        {descripcion: 'tarea4', completada: true},
-                        {descripcion: 'tarea5', completada: true},
-                        {descripcion: 'tarea6', completada: false},
-                        {descripcion: 'tarea7', completada: true},
-                        {descripcion: 'tarea8', completada: true},
-                        {descripcion: 'tarea9', completada: true},
-                    ]
-                },
-                
-                computed: {
-                    tareasNoCompletas() {
-                        return this.tareas.filter(tarea => !tarea.completada);
-
-                        // return this.tareas.filter(function (tarea) {
-                        //     !tarea.completada;
-                        // });
-                    }
-                }
-            })
-        </script>
+        
+        <script src="task-listComponent.js"></script>
     </body>
 </html>
