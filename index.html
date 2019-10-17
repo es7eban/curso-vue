@@ -7,21 +7,30 @@
     </head>
     <body>
 
-        <div id="root">
-            <modal v-show="showModal" @close="showModal = false">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Asperiores animi eaque a inventore rem alias natus mollitia hic 
-                    quis quaerat saepe dignissimos culpa, modi amet sed provident 
-                    impedit vel laborum.
-                </p>
-            </modal>
+        <div id="root" class="container">
+            <tabs>
+                <tab name="Nosotros" :selected="true">
+                    <h1>
+                        Contenido de la tab sobre nosotros.
+                    </h1>
+                </tab>
 
-            <button @click="showModal = true">Show Modal</button>
+                <tab name="Nuestra Cultura">
+                    <h1>
+                        Contenido de la tab sobre nuestra cultura.
+                    </h1>
+                </tab>
+
+                <tab name="Nuestra Vision">
+                    <h1>
+                        Contenido de la tab sobre nuestra vision.
+                    </h1>
+                </tab>
+            </tabs>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         
-        <script src="modalComponent.js"></script>
+        <script src="tabsComponent.js"></script>
     </body>
 </html>
